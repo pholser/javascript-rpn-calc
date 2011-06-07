@@ -1,31 +1,31 @@
 modit('calc.rpn.model', function() {
     var operations = {
         '+' : {
-            execute : function(operandStack) {
-                var first = operandStack.pop();
-                var second = operandStack.pop();
-                operandStack.push(first + second);	
+            execute : function(operands) {
+                var first = operands.pop();
+                var second = operands.pop();
+                operands.push(first + second);	
             }
         },
         '-' : {
-            execute : function(operandStack) {
-                var second = operandStack.pop();
-                var first = operandStack.pop();
-                operandStack.push(first - second);	
+            execute : function(operands) {
+                var second = operands.pop();
+                var first = operands.pop();
+                operands.push(first - second);	
             }
         },
         '*' : {
-            execute : function(operandStack) {
-                var first = operandStack.pop();
-                var second = operandStack.pop();
-                operandStack.push(first * second);	
+            execute : function(operands) {
+                var first = operands.pop();
+                var second = operands.pop();
+                operands.push(first * second);	
             }
         },
         '/' : {
-            execute : function(operandStack) {
-                var second = operandStack.pop();
-                var first = operandStack.pop();
-                operandStack.push(first / second);	
+            execute : function(operands) {
+                var second = operands.pop();
+                var first = operands.pop();
+                operands.push(first / second);	
             }
         },
     };
@@ -35,19 +35,23 @@ modit('calc.rpn.model', function() {
     }
 
     function Calculator() {
-        var operandStack = [];
+        var operands = [];
 
         return {
             enter : function(operand) {
-                operandStack.push(operand);
+                operands.push(operand);
             },
 
             execute : function(operationIndicator) {
-                makeOperation(operationIndicator).execute(operandStack);
+                makeOperation(operationIndicator).execute(operands);
             },
 
             top : function() {
-                return operandStack[operandStack.length - 1];
+                return operands[operands.length - 1];
+            },
+
+            operands : function() {
+                return operands;
             }
         };
     }

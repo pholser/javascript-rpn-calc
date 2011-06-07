@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>RPN Calculator</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+        <script type="text/javascript" src="lib/underscore.js"></script>
+        <script type="text/javascript" src="lib/modit.js"></script>
+        <script type="text/javascript" src="src/calc.rpn.model.js"></script>
+        <script type="text/javascript" src="src/calc.rpn.view.js"></script>
+        <script type="text/javascript" src="src/calc.rpn.presenter.js"></script>
+    </head>
+    <body>
+        <div id="calculator">
+            <table>
+                <tr><td colspan="4"><input id="entry" name="entry" type="text" value="" /></td></tr>
+                <tr><td colspan="4"><span id="operands"></span></td></tr>
+                <tr>
+                    <td><a class="number" href="javascript:;">7</a></td>
+                    <td><a class="number" href="javascript:;">8</a></td>
+                    <td><a class="number" href="javascript:;">9</a></td>
+                    <td><a class="operation" href="javascript:;">/</a></td>
+	            </tr>
+                <tr>
+                    <td><a class="number" href="javascript:;">4</a></td>
+                    <td><a class="number" href="javascript:;">5</a></td>
+                    <td><a class="number" href="javascript:;">6</a></td>
+                    <td><a class="operation" href="javascript:;">*</a></td>
+	            </tr>
+                <tr>
+                    <td><a class="number" href="javascript:;">1</a></td>
+                    <td><a class="number" href="javascript:;">2</a></td>
+                    <td><a class="number" href="javascript:;">3</a></td>
+                    <td><a class="operation" href="javascript:;">-</a></td>
+	            </tr>
+                <tr>
+                    <td><a class="decimal" href="javascript:;">.</a></td>
+                    <td><a class="number" href="javascript:;">0</a></td>
+                    <td><a class="enter" href="javascript:;">Enter</a></td>
+                    <td><a class="operation" href="javascript:;">+</a></td>
+	            </tr>
+            </table>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(function() {
+            var model = new calc.rpn.model.Calculator();
+            var view = new calc.rpn.view.View($('#calculator'));
+            var presenter = new calc.rpn.presenter.Presenter(model, view);
+        });
+    </script>
+</html>
