@@ -13,27 +13,27 @@ modit('calc.rpn.presenter', function() {
             }
         });
         theView.registerFor('enter', function() {
-            _enter(theView.getEntry());	
+            enter(theView.getEntry());
         });
         theView.registerFor('execute', function(operation) {
-            _execute(operation);	
+            execute(operation);
         });
 
-        function _enter(operand) {
+        function enter(operand) {
             theModel.enter(parseFloat(operand));
             theView.setEntry('');
             theView.setOperands(theModel.operands())
         }
 
-        function _execute(operation) {
+        function execute(operation) {
             theModel.execute(operation);
             theView.setEntry('');
             theView.setOperands(theModel.operands())
         }
 
         return {
-            enter : _enter,
-            execute : _execute
+            enter : enter,
+            execute : execute
         };
     }
 

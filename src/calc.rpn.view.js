@@ -1,15 +1,15 @@
 modit('calc.rpn.view', function() {
-	function MessageBus() {
-	    return {
-	        registerFor : function(name, fn) {
-	            this.send[name] = fn;
-	        },
-	        send : {}
-	    };
-	}
+    function MessageBus() {
+        return {
+            registerFor : function(name, fn) {
+                this.send[name] = fn;
+            },
+            send : {}
+        };
+    }
 
     function View() {
-		var messageBus = new MessageBus();
+        var messageBus = new MessageBus();
         var myDom = $('#calculator');
 
         myDom.find('.number').click(function() {
@@ -26,13 +26,13 @@ modit('calc.rpn.view', function() {
         });
 
         return {
-			registerFor : function(name, fn) {
+            registerFor : function(name, fn) {
                 messageBus.registerFor(name, fn);
-			},
-			getEntry : function() {
-                return myDom.find('#entry').val();				
-			},
-			setEntry : function(operand) {
+            },
+            getEntry : function() {
+                return myDom.find('#entry').val();
+            },
+            setEntry : function(operand) {
                 myDom.find('#entry').val(operand);
             },
             setOperands : function(operands) {

@@ -4,30 +4,30 @@ modit('calc.rpn.model', function() {
             execute : function(operands) {
                 var first = operands.pop();
                 var second = operands.pop();
-                operands.push(first + second);	
+                operands.push(first + second);
             }
         },
         '-' : {
             execute : function(operands) {
                 var second = operands.pop();
                 var first = operands.pop();
-                operands.push(first - second);	
+                operands.push(first - second);
             }
         },
         '*' : {
             execute : function(operands) {
                 var first = operands.pop();
                 var second = operands.pop();
-                operands.push(first * second);	
+                operands.push(first * second);
             }
         },
         '/' : {
             execute : function(operands) {
                 var second = operands.pop();
                 var first = operands.pop();
-                operands.push(first / second);	
+                operands.push(first / second);
             }
-        },
+        }
     };
 
     function makeOperation(operationIndicator) {
@@ -56,5 +56,5 @@ modit('calc.rpn.model', function() {
         };
     }
 
-	this.exports(Calculator);	
+    this.exports(Calculator);
 });
